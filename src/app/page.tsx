@@ -3,8 +3,8 @@
 import { socketState } from '@/state'
 import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
-import { Card, CardBody, CardHeader, Divider, Button, Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from "@nextui-org/react"
-import { AddIcon } from '@/icons/Add'
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from '@nextui-org/react'
+import SchemaForm from '@/components/forms/SchemaForm'
 
 export default function Home() {
     const socket = useRecoilValue(socketState)
@@ -19,7 +19,7 @@ export default function Home() {
                     { name: 'firstName', type: 'string', required: false, unique: false },
                     { name: 'lastName', type: 'string', required: false, unique: false },
                     { name: 'age', type: 'number', required: false, unique: false },
-                    { name: 'passport', type: 'string', required: true, unique: true, validate: '^\d{6}$' },
+                    { name: 'passport', type: 'string', required: true, unique: true, validate: '^d{6}$' },
                     { name: 'test', type: 'string', required: false, unique: false, default: '777' }
                 ]
             }
@@ -81,20 +81,7 @@ export default function Home() {
 
     return (
         <div className="grid grid-cols-2 grid-flow-row gap-4 p-4">
-            <Card>
-                <CardHeader className='flex justify-between'>
-                    <div className="flex flex-col">
-                        <p className="text-md">New collection: Users</p>
-                        <p className="text-small text-default-500">Please configure fields for Users collection</p>
-                    </div>
-                    <Button color="success" variant="bordered" startContent={<AddIcon />}>
-                        Add field
-                    </Button>
-                </CardHeader>
-                <Divider/>
-                <CardBody>
-                </CardBody>
-            </Card>
+            <SchemaForm />
             <Table aria-label="Example static collection table">
                 <TableHeader>
                     <TableColumn>NAME</TableColumn>
@@ -103,24 +90,24 @@ export default function Home() {
                 </TableHeader>
                 <TableBody>
                     <TableRow key="1">
-                    <TableCell>Tony Reichert</TableCell>
-                    <TableCell>CEO</TableCell>
-                    <TableCell>Active</TableCell>
+                        <TableCell>Tony Reichert</TableCell>
+                        <TableCell>CEO</TableCell>
+                        <TableCell>Active</TableCell>
                     </TableRow>
                     <TableRow key="2">
-                    <TableCell>Zoey Lang</TableCell>
-                    <TableCell>Technical Lead</TableCell>
-                    <TableCell>Paused</TableCell>
+                        <TableCell>Zoey Lang</TableCell>
+                        <TableCell>Technical Lead</TableCell>
+                        <TableCell>Paused</TableCell>
                     </TableRow>
                     <TableRow key="3">
-                    <TableCell>Jane Fisher</TableCell>
-                    <TableCell>Senior Developer</TableCell>
-                    <TableCell>Active</TableCell>
+                        <TableCell>Jane Fisher</TableCell>
+                        <TableCell>Senior Developer</TableCell>
+                        <TableCell>Active</TableCell>
                     </TableRow>
                     <TableRow key="4">
-                    <TableCell>William Howard</TableCell>
-                    <TableCell>Community Manager</TableCell>
-                    <TableCell>Vacation</TableCell>
+                        <TableCell>William Howard</TableCell>
+                        <TableCell>Community Manager</TableCell>
+                        <TableCell>Vacation</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

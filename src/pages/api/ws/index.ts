@@ -22,10 +22,14 @@ function getError(e: any, notFound?: true) {
     if (notFound) return { error: { message: 'Entry not found' } }
     const message = (() => {
         switch (e.errors[0].validatorKey) {
-            case 'is_null': return 'Field must be not empty'
-            case 'not_unique': return 'Field must be unique'
-            case 'is': return `Field must be match this RegExp: ${e.errors[0].validatorArgs}`
-            default: return 'Field must be valid'
+            case 'is_null':
+                return 'Field must be not empty'
+            case 'not_unique':
+                return 'Field must be unique'
+            case 'is':
+                return `Field must be match this RegExp: ${e.errors[0].validatorArgs}`
+            default:
+                return 'Field must be valid'
         }
     })()
     return {
@@ -61,13 +65,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 storage: './scientry.db',
                 logging: false
             })
-            const Collection = sequelize.define(
-                'collections',
-                {
-                    name: { type: DataTypes.STRING },
-                    fields: { type: DataTypes.TEXT }
-                }
-            )
+            const Collection = sequelize.define('collections', {
+                name: { type: DataTypes.STRING },
+                fields: { type: DataTypes.TEXT }
+            })
             async function getModel(collectionName: string) {
                 const collection = (
                     await Collection.findAll({
@@ -99,14 +100,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const modelSchema = Object.fromEntries(
                     payload.data.map((field: FieldSettings) => [
                         field.name,
-                        { 
-                            type: getType(field.type), 
+                        {
+                            type: getType(field.type),
                             allowNull: !field.required,
                             unique: field.unique,
                             defaultValue: field.default,
                             validate: field.validate
                                 ? {
-                                      is: new RegExp(field.validate, 'i'), 
+                                      is: new RegExp(field.validate, 'i')
                                   }
                                 : undefined
                         }
@@ -132,7 +133,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     const result = (await model.create(payload.data)).dataValues
                     io.emit('task-result', { result })
                 } catch (e) {
-                    io.emit('task-result', { result: getError(e)})
+                    io.emit('task-result', { result: getError(e) })
                 }
             }
             if (type === 'updateEntry') {
@@ -149,9 +150,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         }
                     })
                     if (result.length > 0) io.emit('task-result', { result: result[0].dataValues })
-                    else io.emit('task-result', { result: getError({}, true)})
+                    else io.emit('task-result', { result: getError({}, true) })
                 } catch (e) {
-                    io.emit('task-result', { result: getError(e)})
+                    io.emit('task-result', { result: getError(e) })
                 }
             }
             if (type === 'getEntry') {
@@ -163,10 +164,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         }
                     })
                     if (result.length > 0) io.emit('task-result', { result: result[0].dataValues })
-                    else io.emit('task-result', { result: getError({}, true)})
+                    else io.emit('task-result', { result: getError({}, true) })
                 } catch (e) {
                     console.log(e)
-                    io.emit('task-result', { result: getError(e)})
+                    io.emit('task-result', { result: getError(e) })
                 }
             }
             if (type === 'getEntries') {
