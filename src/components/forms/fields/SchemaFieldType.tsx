@@ -1,6 +1,6 @@
 import { Button, Card, CardBody } from '@nextui-org/react'
 
-export const SchemaField = ({
+export const SchemaFieldType = ({
     name,
     description,
     icon,
@@ -12,7 +12,7 @@ export const SchemaField = ({
     onPress: () => void
 }) => (
     <Card
-        className="bg-default-100 text-foreground-500 border-none h-fit"
+        className="bg-default-100 text-foreground-500 border-none"
         isPressable
         shadow="none"
         onPress={onPress}

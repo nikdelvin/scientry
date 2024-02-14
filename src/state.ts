@@ -1,5 +1,6 @@
 import { atom } from 'recoil'
 import { Socket } from 'socket.io-client'
+import { FieldSettings } from './utils/configs/fields'
 
 const socketState = atom<Socket | undefined>({
     key: 'socketState',
@@ -7,4 +8,9 @@ const socketState = atom<Socket | undefined>({
     dangerouslyAllowMutability: true
 })
 
-export { socketState }
+const fieldsState = atom<FieldSettings[]>({
+    key: 'fieldsState',
+    default: []
+})
+
+export { socketState, fieldsState }

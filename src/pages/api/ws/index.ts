@@ -2,18 +2,10 @@ import { Server, ServerOptions } from 'socket.io'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Sequelize, DataTypes } from 'sequelize'
 import cors from 'cors'
+import { FieldSettings, getType } from '@/utils/configs/fields'
 
 interface IOSocket {
     server: Partial<ServerOptions> & { io: Server }
-}
-
-interface FieldSettings {
-    name: string
-    type: string
-    required: boolean
-    unique: boolean
-    default?: string | number | boolean
-    validate?: string
 }
 
 const corsMiddleware = cors()
@@ -34,17 +26,6 @@ function getError(e: any, notFound?: true) {
     })()
     return {
         error: { field: e.errors[0].path, message }
-    }
-}
-
-function getType(type: string) {
-    switch (type) {
-        case 'string':
-            return DataTypes.STRING
-        case 'boolean':
-            return DataTypes.BOOLEAN
-        case 'number':
-            return DataTypes.INTEGER
     }
 }
 

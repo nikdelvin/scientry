@@ -2,27 +2,24 @@ import {
     Card,
     CardBody,
     CardHeader,
-    Divider,
     Modal,
     ModalContent,
     ModalHeader,
     ModalBody,
-    ModalFooter,
     Button,
     useDisclosure
 } from '@nextui-org/react'
 import { Icon } from '../icons/_Icon'
+import { SchemaFieldType } from './fields/SchemaFieldType'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { fieldsState } from '@/state'
 import { SchemaField } from './fields/SchemaField'
+import { FieldType, fieldsTypes } from '@/utils/configs/fields'
 
 export default function SchemaForm() {
+    const fields = useRecoilValue(fieldsState)
+    const setFields = useSetRecoilState(fieldsState)
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
-    const fields = [
-        { name: 'String', description: 'Short string up to 255 UTF-8 characters length', icon: Icon.String },
-        { name: 'Text', description: 'Long string with unlimited UTF-8 characters length', icon: Icon.Text },
-        { name: 'Boolean', description: 'Boolean value (true / false)', icon: Icon.Boolean },
-        { name: 'Date', description: 'Date value in UTC ISO-8601 format', icon: Icon.Date }
-        //TODO: Add datetime field
-    ]
 
     return (
         <>
@@ -40,7 +37,15 @@ export default function SchemaForm() {
                         Add field
                     </Button>
                 </CardHeader>
-                <CardBody></CardBody>
+                <CardBody className="grid grid-cols-1 grid-flow-row gap-4 p-4">
+                    {fields?.map((field, index) => (
+                        <SchemaField
+                            key={index}
+                            {...fieldsTypes[field.type]}
+                            onPress={() => console.log('hi')}
+                        />
+                    ))}
+                </CardBody>
             </Card>
             <Modal
                 isOpen={isOpen}
@@ -52,10 +57,22 @@ export default function SchemaForm() {
                         <>
                             <ModalHeader className="flex flex-col">Add field</ModalHeader>
                             <ModalBody className="grid grid-cols-2 grid-flow-row gap-4 px-6 py-4">
-                                {fields.map((field, index) => (
-                                    <SchemaField
-                                        onPress={onClose}
-                                        key={index}
+                                {Object.entries(fieldsTypes).map(([key, field]) => (
+                                    <SchemaFieldType
+                                        onPress={() => {
+                                            setFields((fields) => {
+                                                const newFields = [...fields]
+                                                newFields.push({
+                                                    name: '',
+                                                    type: key as FieldType,
+                                                    required: false,
+                                                    unique: false
+                                                })
+                                                return newFields
+                                            })
+                                            onClose()
+                                        }}
+                                        key={key}
                                         {...field}
                                     />
                                 ))}
