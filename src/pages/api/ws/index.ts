@@ -65,7 +65,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                             type: getType(field.type),
                             allowNull: !field.required,
                             unique: field.unique,
-                            defaultValue: field.default,
+                            defaultValue: field.defaultValue,
                             validate: field.validate
                                 ? {
                                       is: new RegExp(field.validate, 'i')
@@ -85,7 +85,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                             type: getType(field.type),
                             allowNull: !field.required,
                             unique: field.unique,
-                            defaultValue: field.default,
+                            defaultValue: field.defaultValue,
                             validate: field.validate
                                 ? {
                                       is: new RegExp(field.validate, 'i')

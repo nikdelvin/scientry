@@ -18,7 +18,7 @@ export interface FieldSettings {
     type: FieldType
     required: boolean
     unique: boolean
-    default?: string | number | boolean
+    defaultValue?: string | number | boolean
     validate?: string
 }
 

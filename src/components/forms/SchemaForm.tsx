@@ -37,14 +37,16 @@ export default function SchemaForm() {
                         Add field
                     </Button>
                 </CardHeader>
-                <CardBody className="grid grid-cols-1 grid-flow-row gap-4 p-4">
-                    {fields?.map((field, index) => (
-                        <SchemaField
-                            key={index}
-                            {...fieldsTypes[field.type]}
-                            onPress={() => console.log('hi')}
-                        />
-                    ))}
+                <CardBody className="flex flex-col p-4 h-fit overflow-scroll">
+                    <div className='flex flex-col gap-4 h-auto'>
+                        {fields?.map((field, index) => (
+                            <SchemaField
+                                key={index}
+                                icon={fieldsTypes[field.type].icon}
+                                {...{...field, ...{ type: fieldsTypes[field.type].name }}}
+                            />
+                        ))}
+                    </div>
                 </CardBody>
             </Card>
             <Modal
