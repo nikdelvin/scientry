@@ -1,6 +1,3 @@
-import { Icon } from '@/components/icons/_Icon'
-import { Button, Card, CardBody, Input, Switch } from '@nextui-org/react'
-
 export const SchemaField = ({
     name,
     type,
@@ -18,6 +15,8 @@ export const SchemaField = ({
     validate?: string
     icon: React.ReactNode
 }) => (
+    <>
+        {/*
     <Card
         className="bg-default-100 text-foreground-500 border-none h-fit"
         shadow="none"
@@ -50,4 +49,6 @@ export const SchemaField = ({
             </div>
         </CardBody>
     </Card>
+    */}
+    </>
 )

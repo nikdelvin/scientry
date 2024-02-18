@@ -1,11 +1,10 @@
 'use client'
-
+import Face from '@material-symbols/svg-300/rounded/face.svg'
+import Button from '@/components/ui/buttons/Button'
 import { socketState } from '@/state'
 import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
-import SchemaForm from '@/components/forms/SchemaForm'
-import List from '@/components/menu/List'
-import ModelsList from '@/components/menu/ModelsList'
+import ButtonGroup from '@/components/ui/buttons/ButtonGroup'
 
 export default function Home() {
     const socket = useRecoilValue(socketState)
@@ -19,7 +18,7 @@ export default function Home() {
                     { name: 'phone', type: 'string', required: true, unique: true },
                     { name: 'firstName', type: 'string', required: false, unique: false },
                     { name: 'lastName', type: 'string', required: false, unique: false },
-                    { name: 'age', type: 'number', required: false, unique: false },
+                    { name: 'age', type: 'integer', required: false, unique: false },
                     { name: 'passport', type: 'string', required: true, unique: true, validate: '^d{6}$' },
                     { name: 'test', type: 'string', required: false, unique: false, default: '777' }
                 ]
@@ -81,16 +80,100 @@ export default function Home() {
     }, [socket])
 
     return (
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,5fr)] gap-4 p-4 h-full">
-            <List/>
-            <ModelsList/>
-            <SchemaForm />
-            <div className="hidden flex-col w-full h-full justify-center items-center bg-zinc-50 text-zinc-950 opacity-90 ">
-                <button onClick={updateCollection}>Update Collection</button>
-                <button onClick={createEntry}>Create entry</button>
-                <button onClick={updateEntry}>Update entry</button>
-                <button onClick={getEntry}>Get entry</button>
-                <button onClick={getEntries}>Get entries</button>
+        <div className="h-full bg-zinc-950 text-zinc-50">
+            <div className="flex h-full w-full flex-col items-center justify-center gap-4 px-2">
+                <Button
+                    color="primary"
+                    haveAnimation={true}
+                    haveShadow={true}
+                    size="small"
+                    onClick={updateCollection}
+                >
+                    <Face />
+                    Update Collection
+                </Button>
+                <Button
+                    color="secondary"
+                    onClick={createEntry}
+                >
+                    Create entry
+                </Button>
+                <Button
+                    color="success"
+                    isDisabled={true}
+                    onClick={updateEntry}
+                >
+                    Update entry
+                </Button>
+                <Button
+                    color="error"
+                    onClick={getEntry}
+                    isLoading={true}
+                >
+                    Get entry
+                </Button>
+                <Button onClick={getEntries}>Get entries</Button>
+                <Button
+                    type="bordered"
+                    color="primary"
+                    size="large"
+                    haveAnimation={true}
+                    haveShadow={true}
+                    isIconOnly={true}
+                    onClick={updateCollection}
+                >
+                    <Face />
+                </Button>
+                <Button
+                    type="bordered"
+                    color="secondary"
+                    onClick={createEntry}
+                >
+                    Create entry
+                </Button>
+                <Button
+                    type="bordered"
+                    color="success"
+                    isDisabled={true}
+                    onClick={updateEntry}
+                >
+                    Update entry
+                </Button>
+                <Button
+                    type="bordered"
+                    color="error"
+                    isLoading={true}
+                    onClick={getEntry}
+                >
+                    Get entry
+                </Button>
+                <Button
+                    type="bordered"
+                    onClick={getEntries}
+                >
+                    Get entries
+                </Button>
+                <ButtonGroup
+                    color="primary"
+                    haveAnimation={true}
+                    haveShadow={true}
+                    buttons={[
+                        { content: 'Test 1' },
+                        { content: 'Test 2', isDisabled: true },
+                        { content: 'Test 3', isLoading: true }
+                    ]}
+                />
+                <ButtonGroup
+                    type="bordered"
+                    color="primary"
+                    haveAnimation={true}
+                    haveShadow={true}
+                    buttons={[
+                        { content: 'Test 1' },
+                        { content: 'Test 2', isDisabled: true },
+                        { content: 'Test 3', isLoading: true }
+                    ]}
+                />
             </div>
         </div>
     )

@@ -2,7 +2,6 @@ import { Server, ServerOptions } from 'socket.io'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Sequelize, DataTypes } from 'sequelize'
 import cors from 'cors'
-import { FieldSettings, getType } from '@/utils/configs/fields'
 
 interface IOSocket {
     server: Partial<ServerOptions> & { io: Server }
@@ -26,6 +25,31 @@ function getError(e: any, notFound?: true) {
     })()
     return {
         error: { field: e.errors[0].path, message }
+    }
+}
+
+function getType(type: string) {
+    switch (type) {
+        case 'uuid':
+            return DataTypes.UUID
+        case 'boolean':
+            return DataTypes.BOOLEAN
+        case 'string':
+            return DataTypes.STRING
+        case 'text':
+            return DataTypes.TEXT
+        case 'date':
+            return DataTypes.DATEONLY
+        case 'datetime':
+            return DataTypes.DATE
+        case 'integer':
+            return DataTypes.INTEGER
+        case 'bigint':
+            return DataTypes.BIGINT
+        case 'float':
+            return DataTypes.FLOAT
+        case 'double':
+            return DataTypes.DOUBLE
     }
 }
 
@@ -59,7 +83,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     })
                 )[0].dataValues
                 const modelSchema = Object.fromEntries(
-                    JSON.parse(collection.fields).map((field: FieldSettings) => [
+                    JSON.parse(collection.fields).map((field: SciField.Settings) => [
                         field.name,
                         {
                             type: getType(field.type),
@@ -79,7 +103,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
             if (type === 'updateCollection') {
                 const modelSchema = Object.fromEntries(
-                    payload.data.map((field: FieldSettings) => [
+                    payload.data.map((field: SciField.Settings) => [
                         field.name,
                         {
                             type: getType(field.type),

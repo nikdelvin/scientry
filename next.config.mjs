@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: false,
-    webpack: (config) => {
-        config.resolve.fallback = { fs: false }
-        config.externals = ['pg', 'sqlite3', 'tedious', 'pg-hstore', 'critters']
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/i,
+            issuer: /\.[jt]sx?$/,
+            use: ['@svgr/webpack']
+        })
         return config
     }
 }

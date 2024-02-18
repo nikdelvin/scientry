@@ -1,5 +1,3 @@
-import { Button, Card, CardBody } from '@nextui-org/react'
-
 export const SchemaFieldType = ({
     name,
     description,
@@ -11,6 +9,8 @@ export const SchemaFieldType = ({
     icon: React.ReactNode
     onPress: () => void
 }) => (
+    <>
+        {/*
     <Card
         className="bg-default-100 text-foreground-500 border-none"
         isPressable
@@ -32,4 +32,6 @@ export const SchemaFieldType = ({
             </div>
         </CardBody>
     </Card>
+    */}
+    </>
 )

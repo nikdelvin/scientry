@@ -3,14 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "dev": "npm run prettier && npm run lint && next dev",
         "build": "next build",
         "start": "next start",
         "prettier": "npx prettier --write .",
         "lint": "next lint"
     },
     "dependencies": {
-        "@nextui-org/react": "^2.2.9",
+        "@material-symbols/svg-300": "^0.15.0",
         "framer-motion": "^11.0.3",
         "next": "14.1.0",
         "react": "^18",
@@ -22,6 +22,7 @@
         "sqlite3": "^5.1.7"
     },
     "devDependencies": {
+        "@svgr/webpack": "^8.1.0",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
@@ -31,6 +32,7 @@
         "eslint-config-prettier": "^9.1.0",
         "postcss": "^8",
         "prettier": "^3.2.5",
+        "prettier-plugin-tailwindcss": "^0.5.11",
         "tailwindcss": "^3.3.0",
         "typescript": "^5"
     }

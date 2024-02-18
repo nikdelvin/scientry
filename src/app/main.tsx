@@ -4,7 +4,6 @@ import io from 'socket.io-client'
 import { RecoilRoot, useSetRecoilState } from 'recoil'
 import { useEffect } from 'react'
 import { socketState } from '../state'
-import { NextUIProvider } from '@nextui-org/react'
 
 const SocketRoot = ({
     children
@@ -28,13 +27,11 @@ export default function Main({
 }>) {
     return (
         <RecoilRoot>
-            <NextUIProvider>
-                <SocketRoot>
-                    <main className="select-none overflow-hidden">
-                        <div className="flex flex-col w-screen h-screen overflow-y-scroll">{children}</div>
-                    </main>
-                </SocketRoot>
-            </NextUIProvider>
+            <SocketRoot>
+                <main className="select-none overflow-hidden">
+                    <div className="flex h-screen w-screen flex-col overflow-y-scroll">{children}</div>
+                </main>
+            </SocketRoot>
         </RecoilRoot>
     )
 }

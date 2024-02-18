@@ -1,21 +1,17 @@
-import {Listbox, ListboxItem, ListboxSection, cn} from "@nextui-org/react";
-import { Icon } from "../icons/_Icon";
-
-const IconWrapper = ({children, className}: {children: React.ReactNode, className: string}) => (
-  <div className={cn(className, "flex items-center rounded-small justify-center w-8 h-8")}>
-    {children}
-  </div>
+const IconWrapper = ({ children, className }: { children: React.ReactNode; className: string }) => (
+    <div className="rounded-small flex h-8 w-8 items-center justify-center">{children}</div>
 )
 
-const ItemCounter = ({number}: {number?: number}) => (
-    <div className="flex items-center gap-1 text-default-400">
-      <span className="text-small">{number ?? ''}</span>
-      {Icon.ChevronRight}
+const ItemCounter = ({ number }: { number?: number }) => (
+    <div className="text-default-400 flex items-center gap-1">
+        <span className="text-small">{number ?? ''}</span>
     </div>
 )
 
 export default function ModelsList() {
     return (
+        <>
+            {/*
         <Listbox>
             <ListboxItem 
                 key="new"
@@ -49,5 +45,7 @@ export default function ModelsList() {
                 Geo Data
             </ListboxItem>
         </Listbox>
+        */}
+        </>
     )
 }

@@ -1,28 +1,15 @@
-import {
-    Card,
-    CardBody,
-    CardHeader,
-    Modal,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    Button,
-    useDisclosure
-} from '@nextui-org/react'
-import { Icon } from '../icons/_Icon'
 import { SchemaFieldType } from './fields/SchemaFieldType'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { fieldsState } from '@/state'
 import { SchemaField } from './fields/SchemaField'
-import { FieldType, fieldsTypes } from '@/utils/configs/fields'
 
 export default function SchemaForm() {
     const fields = useRecoilValue(fieldsState)
     const setFields = useSetRecoilState(fieldsState)
-    const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
     return (
         <>
+            {/*
             <Card>
                 <CardHeader className="flex justify-between gap-4 p-4">
                     <div className="flex flex-col">
@@ -83,6 +70,7 @@ export default function SchemaForm() {
                     )}
                 </ModalContent>
             </Modal>
+            */}
         </>
     )
 }

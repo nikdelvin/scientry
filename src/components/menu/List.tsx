@@ -1,24 +1,20 @@
-import {Listbox, ListboxItem, ListboxSection, cn} from "@nextui-org/react";
-import { Icon } from "../icons/_Icon";
-
-const IconWrapper = ({children, className}: {children: React.ReactNode, className: string}) => (
-  <div className={cn(className, "flex items-center rounded-small justify-center w-8 h-8")}>
-    {children}
-  </div>
+const IconWrapper = ({ children, className }: { children: React.ReactNode; className: string }) => (
+    <div className="rounded-small flex h-8 w-8 items-center justify-center">{children}</div>
 )
 
-const ItemCounter = ({number}: {number?: number}) => (
-    <div className="flex items-center gap-1 text-default-400">
-      <span className="text-small">{number ?? ''}</span>
-      {Icon.ChevronRight}
+const ItemCounter = ({ number }: { number?: number }) => (
+    <div className="text-default-400 flex items-center gap-1">
+        <span className="text-small">{number ?? ''}</span>
     </div>
 )
 
 export default function List() {
     return (
-        <Listbox>
+        <>
+            {/*
+        <Listbox className="bg-default-50">
             <ListboxItem 
-                key="new" 
+                key="dashboard" 
                 startContent={
                     <IconWrapper className="bg-primary/10 text-primary">
                         {Icon.Dashboard}
@@ -27,7 +23,7 @@ export default function List() {
                 Dashboard
             </ListboxItem>
             <ListboxItem 
-                key="new" 
+                key="database" 
                 startContent={
                     <IconWrapper className="bg-success/10 text-success">
                         {Icon.Database}
@@ -36,8 +32,8 @@ export default function List() {
                 Database
             </ListboxItem>
             <ListboxItem 
-                key="copy"
-                className="bg-default-50"
+                key="schema"
+                className="bg-secondary/10 text-secondary"
                 startContent={
                     <IconWrapper className="bg-secondary/10 text-secondary">
                         {Icon.Schema}
@@ -49,5 +45,7 @@ export default function List() {
                 Schema
             </ListboxItem>
         </Listbox>
+        */}
+        </>
     )
 }
