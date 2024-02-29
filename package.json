@@ -3,9 +3,9 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "npm run prettier && npm run lint && next dev",
+        "dev": "npm run prettier && npm run lint && next dev --turbo",
         "build": "next build",
-        "start": "next start",
+        "start": "next start -p 3001",
         "prettier": "npx prettier --write .",
         "lint": "next lint"
     },
