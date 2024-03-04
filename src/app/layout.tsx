@@ -1,13 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Main from './main'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
     title: 'Scientry',
-    description: 'Smart dashboard database for scientific researchers'
+    description: 'Self-hosted, all-in-one Data Management & Visualization solution for scientific researchers.',
+    icons: [{ rel: 'icon', url: '/favicon.svg', type: 'image/svg+xml' }]
 }
 
 export default function RootLayout({
@@ -20,7 +18,7 @@ export default function RootLayout({
             lang="en"
             className="bg-background text-foreground dark"
         >
-            <body className={inter.className}>
+            <body>
                 <Main>{children}</Main>
             </body>
         </html>
