@@ -2,8 +2,8 @@ export const GitHubIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0,0,256,256"
-        width="24"
-        height="24"
+        width="24px"
+        height="24px"
     >
         <defs>
             <linearGradient
@@ -33,11 +33,11 @@ export const GitHubIcon = () => (
             >
                 <stop
                     offset="0"
-                    stop-color="#60a5fa"
+                    stop-color="#3b82f6"
                 />
                 <stop
                     offset="1"
-                    stop-color="#4ade80"
+                    stop-color="#22c55e"
                 />
             </linearGradient>
         </defs>
