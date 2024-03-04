@@ -1,15 +1,28 @@
+import {
+    Card,
+    CardBody,
+    CardHeader,
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    Button,
+    useDisclosure
+} from '@nextui-org/react'
+import { Icon } from '../icons/_Icon'
 import { SchemaFieldType } from './fields/SchemaFieldType'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { fieldsState } from '@/state'
 import { SchemaField } from './fields/SchemaField'
+import { FieldType, fieldsTypes } from '@/utils/configs/fields'
 
 export default function SchemaForm() {
     const fields = useRecoilValue(fieldsState)
     const setFields = useSetRecoilState(fieldsState)
+    const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
     return (
         <>
-            {/*
             <Card>
                 <CardHeader className="flex justify-between gap-4 p-4">
                     <div className="flex flex-col">
@@ -24,13 +37,13 @@ export default function SchemaForm() {
                         Add field
                     </Button>
                 </CardHeader>
-                <CardBody className="flex flex-col p-4 h-fit overflow-scroll">
-                    <div className='flex flex-col gap-4 h-auto'>
+                <CardBody className="flex h-fit flex-col overflow-scroll p-4">
+                    <div className="flex h-auto flex-col gap-4">
                         {fields?.map((field, index) => (
                             <SchemaField
                                 key={index}
                                 icon={fieldsTypes[field.type].icon}
-                                {...{...field, ...{ type: fieldsTypes[field.type].name }}}
+                                {...{ ...field, ...{ type: fieldsTypes[field.type].name } }}
                             />
                         ))}
                     </div>
@@ -45,7 +58,7 @@ export default function SchemaForm() {
                     {(onClose) => (
                         <>
                             <ModalHeader className="flex flex-col">Add field</ModalHeader>
-                            <ModalBody className="grid grid-cols-2 grid-flow-row gap-4 px-6 py-4">
+                            <ModalBody className="grid grid-flow-row grid-cols-2 gap-4 px-6 py-4">
                                 {Object.entries(fieldsTypes).map(([key, field]) => (
                                     <SchemaFieldType
                                         onPress={() => {
@@ -70,7 +83,6 @@ export default function SchemaForm() {
                     )}
                 </ModalContent>
             </Modal>
-            */}
         </>
     )
 }

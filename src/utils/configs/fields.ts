@@ -1,4 +1,27 @@
-/*
+import { Icon } from '@/components/icons/_Icon'
+import { DataTypes } from 'sequelize'
+
+export type FieldType =
+    | 'uuid'
+    | 'boolean'
+    | 'string'
+    | 'text'
+    | 'date'
+    | 'datetime'
+    | 'integer'
+    | 'bigint'
+    | 'float'
+    | 'double'
+
+export interface FieldSettings {
+    name: string
+    type: FieldType
+    required: boolean
+    unique: boolean
+    defaultValue?: string | number | boolean
+    validate?: string
+}
+
 export const fieldsTypes = {
     uuid: { name: 'UUID', description: 'Unique universal 128-bit identifier', icon: Icon.UUID },
     boolean: { name: 'Boolean', description: 'Boolean value (true / false)', icon: Icon.Boolean },
@@ -15,4 +38,3 @@ export const fieldsTypes = {
     float: { name: 'Float', description: 'Floating point number with 4-byte precision', icon: Icon.Float },
     double: { name: 'Double', description: 'Large floating point number with 8-byte precision', icon: Icon.Double }
 }
-*/

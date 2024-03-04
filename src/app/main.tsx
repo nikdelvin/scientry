@@ -1,5 +1,5 @@
 'use client'
-
+import { NextUIProvider } from '@nextui-org/react'
 import io from 'socket.io-client'
 import { RecoilRoot, useSetRecoilState } from 'recoil'
 import { useEffect } from 'react'
@@ -27,11 +27,13 @@ export default function Main({
 }>) {
     return (
         <RecoilRoot>
-            <SocketRoot>
-                <main className="select-none overflow-hidden">
-                    <div className="flex h-screen w-screen flex-col overflow-y-scroll">{children}</div>
-                </main>
-            </SocketRoot>
+            <NextUIProvider>
+                <SocketRoot>
+                    <main className="select-none overflow-hidden">
+                        <div className="flex h-screen w-screen flex-col overflow-y-scroll">{children}</div>
+                    </main>
+                </SocketRoot>
+            </NextUIProvider>
         </RecoilRoot>
     )
 }

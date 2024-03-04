@@ -7,21 +7,3 @@
         text-wrap: balance;
     }
 }
-
-.text-base svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-}
-
-.text-sm svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-.text-lg svg {
-    width: 28px;
-    height: 28px;
-    fill: currentColor;
-}
