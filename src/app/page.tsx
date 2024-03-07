@@ -69,7 +69,7 @@ export default function Home() {
                                 height={360}
                             />
                         </div>
-                        <div className="relative flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[-10deg] blur-md scale-80 py-4">
+                        <div className="flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[-10deg] blur-md scale-80 py-4">
                             <Image
                                 alt="Main 3"
                                 src="/main-3.png"
