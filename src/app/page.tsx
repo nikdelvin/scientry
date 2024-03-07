@@ -1,10 +1,11 @@
 'use client'
 
 import { Icon } from '@/components/icons/_Icon'
+import Image from 'next/image'
 
 export default function Home() {
     return (
-        <div className="h-full bg-zinc-950 text-zinc-50">
+        <div className="h-full bg-gradient-to-tr from-blue-400/25 via-zinc-950 to-green-400/25 text-zinc-50">
             <div className="flex h-full w-full flex-col items-center justify-start gap-4 p-16">
                 <div className="grid grid-flow-row grid-cols-1 gap-4 lg:grid-cols-2">
                     <div className="flex w-full flex-col">
@@ -48,6 +49,35 @@ export default function Home() {
                                 <span className="font-medium">GitHub</span>
                             </a>
                         </div>
+                    </div>
+                    <div className="grid grid-flow-row grid-cols-2 gap-4 mx-8 my-16">
+                        <div className="flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[-10deg] scale-100 py-4">
+                            <Image
+                                alt="Main 1"
+                                src="/main-1.png"
+                                width={640}
+                                height={360}
+                            />
+                        </div>
+                        <div className='flex flex-col items-center justify-center h-full'></div>
+                        <div className='flex flex-col items-center justify-center h-full'></div>
+                        <div className="flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[10deg] blur-sm scale-90 py-4">
+                            <Image
+                                alt="Main 2"
+                                src="/main-2.png"
+                                width={640}
+                                height={360}
+                            />
+                        </div>
+                        <div className="relative flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[-10deg] blur-md scale-80 py-4">
+                            <Image
+                                alt="Main 3"
+                                src="/main-3.png"
+                                width={640}
+                                height={360}
+                            />
+                        </div>
+                        <div className='flex flex-col items-center justify-center h-full'></div>
                     </div>
                 </div>
             </div>
