@@ -16,13 +16,11 @@ export const LogoIcon = () => (
             >
                 <stop
                     offset="0"
-                    stop-color="#38bdf8"
-                    stop-opacity="0"
+                    stop-color="#86efac"
                 />
                 <stop
                     offset="1"
-                    stop-color="#38bdf8"
-                    stop-opacity="0"
+                    stop-color="#93c5fd"
                 />
             </linearGradient>
             <linearGradient
@@ -35,11 +33,11 @@ export const LogoIcon = () => (
             >
                 <stop
                     offset="0"
-                    stop-color="#60a5fa"
+                    stop-color="#22c55e"
                 />
                 <stop
                     offset="1"
-                    stop-color="#4ade80"
+                    stop-color="#3b82f6"
                 />
             </linearGradient>
         </defs>
@@ -47,9 +45,9 @@ export const LogoIcon = () => (
             fill="none"
             fill-rule="nonzero"
             stroke="none"
-            stroke-width="none"
+            stroke-width="1"
             stroke-linecap="butt"
-            stroke-linejoin="none"
+            stroke-linejoin="miter"
             stroke-miterlimit="10"
             stroke-dasharray=""
             stroke-dashoffset="0"
@@ -58,23 +56,7 @@ export const LogoIcon = () => (
             font-size="none"
             text-anchor="none"
         >
-            <path
-                transform="translate(-0.0002,256.0001) rotate(-90) scale(4,4)"
-                d="M47.147,40.992c0.221,1.031 0.408,2.044 0.524,3.015c0.657,5.484 -0.483,9.324 -3.211,10.813c-0.788,0.43 -1.67,0.643 -2.628,0.643c-2.357,0 -5.177,-1.287 -8.203,-3.788c-0.544,-0.449 -1.087,-0.937 -1.629,-1.45c-0.542,0.512 -1.085,1.001 -1.629,1.45c-3.026,2.501 -5.846,3.788 -8.203,3.788c-0.958,0 -1.839,-0.212 -2.628,-0.643c-2.728,-1.49 -3.868,-5.33 -3.211,-10.813c0.117,-0.97 0.303,-1.984 0.524,-3.015c-6.61,-1.975 -10.853,-5.234 -10.853,-8.992c0,-3.758 4.243,-7.017 10.853,-8.992c-0.221,-1.031 -0.408,-2.044 -0.524,-3.015c-0.657,-5.484 0.483,-9.324 3.211,-10.813c2.727,-1.488 6.574,-0.372 10.831,3.146c0.544,0.449 1.087,0.937 1.629,1.45c0.542,-0.512 1.085,-1.001 1.629,-1.45c4.257,-3.518 8.102,-4.635 10.831,-3.146c2.728,1.49 3.868,5.33 3.211,10.813c-0.117,0.97 -0.303,1.984 -0.524,3.015c6.61,1.975 10.853,5.234 10.853,8.992c0,3.758 -4.243,7.017 -10.853,8.992z"
-                id="strokeMainSVG"
-                fill-opacity="0.18824"
-                fill="#22d3ee"
-                stroke-opacity="0.18824"
-                stroke="#22d3ee"
-                stroke-width="5"
-                stroke-linejoin="round"
-            />
-            <g
-                transform="translate(-0.0002,256.0001) rotate(-90) scale(4,4)"
-                stroke="none"
-                stroke-width="1"
-                stroke-linejoin="miter"
-            >
+            <g transform="translate(256.00011,0.00011) rotate(90) scale(4,4)">
                 <circle
                     cx="32"
                     cy="32"

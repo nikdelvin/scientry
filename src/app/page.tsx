@@ -5,13 +5,13 @@ import Image from 'next/image'
 
 export default function Home() {
     return (
-        <div className="h-full bg-gradient-to-tr from-blue-400/25 via-zinc-950 to-green-400/25 text-zinc-50">
+        <div className="h-full bg-gradient-to-tr from-blue-500/25 via-zinc-950 to-green-500/25 text-zinc-50">
             <div className="flex h-full w-full flex-col items-center justify-start gap-4 p-16">
                 <div className="grid grid-flow-row grid-cols-1 gap-4 lg:grid-cols-2">
                     <div className="flex w-full flex-col">
                         <div className="mb-16 flex flex-row items-center gap-2">
                             <div className="h-[96px] w-[96px]">{Icon.Logo}</div>
-                            <h1 className="bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-8xl font-bold leading-tight text-transparent">
+                            <h1 className="bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 bg-clip-text text-8xl font-bold leading-tight text-transparent">
                                 Scientry
                             </h1>
                         </div>
@@ -50,8 +50,8 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-                    <div className="grid grid-flow-row grid-cols-2 gap-4 mx-8 my-16">
-                        <div className="flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[-10deg] scale-100 py-4">
+                    <div className="mx-8 my-16 grid grid-flow-row grid-cols-2 gap-4">
+                        <div className="flex h-full w-full rotate-[-10deg] scale-100 flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 py-4">
                             <Image
                                 alt="Main 1"
                                 src="/main-1.png"
@@ -59,9 +59,9 @@ export default function Home() {
                                 height={360}
                             />
                         </div>
-                        <div className='flex flex-col items-center justify-center h-full'></div>
-                        <div className='flex flex-col items-center justify-center h-full'></div>
-                        <div className="flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[10deg] blur-sm scale-90 py-4">
+                        <div className="flex h-full flex-col items-center justify-center"></div>
+                        <div className="flex h-full flex-col items-center justify-center"></div>
+                        <div className="flex h-full w-full rotate-[10deg] scale-90 flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 py-4 blur-sm">
                             <Image
                                 alt="Main 2"
                                 src="/main-2.png"
@@ -69,7 +69,7 @@ export default function Home() {
                                 height={360}
                             />
                         </div>
-                        <div className="flex h-full w-full flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rotate-[-10deg] blur-md scale-80 py-4">
+                        <div className="flex h-full w-full rotate-[-10deg] scale-80 flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 py-4 blur-md">
                             <Image
                                 alt="Main 3"
                                 src="/main-3.png"
@@ -77,7 +77,7 @@ export default function Home() {
                                 height={360}
                             />
                         </div>
-                        <div className='flex flex-col items-center justify-center h-full'></div>
+                        <div className="flex h-full flex-col items-center justify-center"></div>
                     </div>
                 </div>
             </div>
