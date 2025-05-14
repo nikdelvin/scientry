@@ -1,4 +1,4 @@
-import { Listbox, ListboxItem, ListboxSection, cn } from '@nextui-org/react'
+import { Listbox, ListboxItem, ListboxSection, cn } from '@heroui/react'
 import { Icon } from '../icons/_Icon'
 
 const IconWrapper = ({ children, className }: { children: React.ReactNode; className: string }) => (
@@ -16,7 +16,7 @@ export default function ModelsList() {
     return (
         <Listbox>
             <ListboxItem
-                key="new"
+                key="users"
                 className="bg-default-50"
                 startContent={<IconWrapper className="bg-warning/10 text-warning">{Icon.User}</IconWrapper>}
                 endContent={<ItemCounter />}
@@ -24,13 +24,13 @@ export default function ModelsList() {
                 Users
             </ListboxItem>
             <ListboxItem
-                key="new"
+                key="countries"
                 startContent={<IconWrapper className="bg-danger/10 text-danger">{Icon.Flag}</IconWrapper>}
             >
                 Countries
             </ListboxItem>
             <ListboxItem
-                key="copy"
+                key="geo-data"
                 startContent={<IconWrapper className="bg-foreground/10 text-foreground">{Icon.Planet}</IconWrapper>}
             >
                 Geo Data

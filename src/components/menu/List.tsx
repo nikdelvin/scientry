@@ -1,4 +1,4 @@
-import { Listbox, ListboxItem, ListboxSection, cn } from '@nextui-org/react'
+import { Listbox, ListboxItem, ListboxSection, cn } from '@heroui/react'
 import { Icon } from '../icons/_Icon'
 
 const IconWrapper = ({ children, className }: { children: React.ReactNode; className: string }) => (

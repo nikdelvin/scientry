@@ -1,15 +1,18 @@
-import { atom } from 'recoil'
+import { create } from 'zustand'
 import { Socket } from 'socket.io-client'
 
-const socketState = atom<Socket | undefined>({
-    key: 'socketState',
-    default: undefined,
-    dangerouslyAllowMutability: true
-})
+interface ZustandStore {
+    socketState: Socket | undefined
+    fieldsState: SciField.Settings[]
+    setSocketState: (socketState: Socket) => void
+    setFieldsState: (fieldsState: SciField.Settings[]) => void
+}
 
-const fieldsState = atom<SciField.Settings[]>({
-    key: 'fieldsState',
-    default: []
-})
+const useStore = create<ZustandStore>((set) => ({
+    socketState: undefined,
+    fieldsState: [],
+    setSocketState: (socketState) => set(() => ({ socketState: socketState })),
+    setFieldsState: (fieldsState) => set(() => ({ fieldsState: fieldsState }))
+}))
 
-export { socketState, fieldsState }
+export { useStore }

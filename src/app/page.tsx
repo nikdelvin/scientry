@@ -1,86 +1,87 @@
 'use client'
-
-import { Icon } from '@/components/icons/_Icon'
-import Image from 'next/image'
+import { useStore } from '@/state'
+import { useEffect } from 'react'
+import SchemaForm from '@/components/forms/SchemaForm'
+import List from '@/components/menu/List'
+import ModelsList from '@/components/menu/ModelsList'
 
 export default function Home() {
+    const socket = useStore((state) => state.socketState)
+    function updateCollection() {
+        socket?.emit('task', {
+            type: 'updateCollection',
+            payload: {
+                collection: 'users',
+                data: [
+                    { name: 'email', type: 'string', required: true, unique: true },
+                    { name: 'phone', type: 'string', required: true, unique: true },
+                    { name: 'firstName', type: 'string', required: false, unique: false },
+                    { name: 'lastName', type: 'string', required: false, unique: false },
+                    { name: 'age', type: 'integer', required: false, unique: false },
+                    { name: 'passport', type: 'string', required: true, unique: true, validate: '^d{10}$' }
+                ]
+            }
+        })
+    }
+    function createEntry() {
+        socket?.emit('task', {
+            type: 'createEntry',
+            payload: {
+                collection: 'users',
+                data: {
+                    email: 'the@nikdelv.in',
+                    phone: '+971501234567',
+                    firstName: 'Nikita',
+                    lastName: 'Stadnik',
+                    age: 25,
+                    passport: '1234567890'
+                }
+            }
+        })
+    }
+    function updateEntry() {
+        socket?.emit('task', {
+            type: 'updateEntry',
+            payload: {
+                collection: 'users',
+                id: 99,
+                data: {
+                    email: 'projects@bso.ae',
+                    age: 30
+                }
+            }
+        })
+    }
+    function getEntry() {
+        socket?.emit('task', {
+            type: 'getEntry',
+            payload: {
+                collection: 'users',
+                id: 99
+            }
+        })
+    }
+    function getEntries() {
+        socket?.emit('task', {
+            type: 'getEntries',
+            payload: {
+                collection: 'users'
+            }
+        })
+    }
+    useEffect(() => {
+        if (socket?.id != null) {
+            socket?.on('task-result', ({ result }) => {
+                console.log(result)
+            })
+        }
+    }, [socket])
+
     return (
-        <div className="h-full bg-gradient-to-tr from-blue-500/25 via-zinc-950 to-green-500/25 text-zinc-50">
-            <div className="flex h-full w-full flex-col items-center justify-start gap-4 p-16">
-                <div className="grid grid-flow-row grid-cols-1 gap-4 lg:grid-cols-2">
-                    <div className="flex w-full flex-col">
-                        <div className="mb-16 flex flex-row items-center gap-2">
-                            <div className="h-[96px] w-[96px]">{Icon.Logo}</div>
-                            <h1 className="bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 bg-clip-text text-8xl font-bold leading-tight text-transparent">
-                                Scientry
-                            </h1>
-                        </div>
-                        <h1 className="mb-10 text-5xl font-bold leading-tight">
-                            Build{' '}
-                            <span className="inline bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 bg-clip-text text-transparent">
-                                beautiful{' '}
-                            </span>{' '}
-                            dashboards with compact, easy to use and fully customizable CMS for{' '}
-                            <span className="inline bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 bg-clip-text text-transparent">
-                                Data Management
-                            </span>
-                        </h1>
-                        <h3 className="mb-10 text-2xl text-zinc-500">
-                            Self-hosted, all-in-one Data Management & Visualization solution for scientific researchers.
-                        </h3>
-                        <div className="grid w-[400px] grid-flow-row grid-cols-2 gap-4">
-                            <a
-                                data-color="primary"
-                                data-type="solid"
-                                data-size="large"
-                                className="button"
-                                href="/schema-builder"
-                            >
-                                <span className="font-medium">Research more</span>
-                            </a>
-                            <a
-                                data-color="success"
-                                data-type="bordered"
-                                data-size="large"
-                                className="button"
-                                href="https://github.com/nikdelvin/scientry"
-                            >
-                                {Icon.GitHub}
-                                <span className="font-medium">GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="mx-8 my-16 grid grid-flow-row grid-cols-2 gap-4">
-                        <div className="flex h-full w-full rotate-[-10deg] scale-100 flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 py-4">
-                            <Image
-                                alt="Main 1"
-                                src="/main-1.png"
-                                width={640}
-                                height={360}
-                            />
-                        </div>
-                        <div className="flex h-full flex-col items-center justify-center"></div>
-                        <div className="flex h-full flex-col items-center justify-center"></div>
-                        <div className="flex h-full w-full rotate-[10deg] scale-90 flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 py-4 blur-sm">
-                            <Image
-                                alt="Main 2"
-                                src="/main-2.png"
-                                width={640}
-                                height={360}
-                            />
-                        </div>
-                        <div className="flex h-full w-full rotate-[-10deg] scale-80 flex-col items-center justify-center rounded-3xl bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 py-4 blur-md">
-                            <Image
-                                alt="Main 3"
-                                src="/main-3.png"
-                                width={640}
-                                height={360}
-                            />
-                        </div>
-                        <div className="flex h-full flex-col items-center justify-center"></div>
-                    </div>
-                </div>
-            </div>
+        <div className="grid h-full grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,5fr)] gap-4 p-4">
+            <List />
+            <ModelsList />
+            <SchemaForm />
         </div>
     )
 }

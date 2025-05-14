@@ -1,5 +1,5 @@
 import { Icon } from '@/components/icons/_Icon'
-import { Button, Card, CardBody, Input, Switch } from '@nextui-org/react'
+import { Button, Card, CardBody, Input, Switch } from '@heroui/react'
 
 export const SchemaField = ({
     name,
@@ -8,7 +8,8 @@ export const SchemaField = ({
     unique,
     defaultValue,
     validate,
-    icon
+    icon,
+    onDelete
 }: {
     name: string
     type: string
@@ -17,6 +18,7 @@ export const SchemaField = ({
     defaultValue?: string | number | boolean
     validate?: string
     icon: React.ReactNode
+    onDelete: () => void
 }) => (
     <Card
         className="h-fit border-none bg-default-100 text-foreground-500"
@@ -56,6 +58,7 @@ export const SchemaField = ({
                     isIconOnly
                     color="danger"
                     variant="faded"
+                    onPress={onDelete}
                 >
                     {Icon.Delete}
                 </Button>

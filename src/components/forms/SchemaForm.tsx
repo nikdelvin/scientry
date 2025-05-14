@@ -8,17 +8,16 @@ import {
     ModalBody,
     Button,
     useDisclosure
-} from '@nextui-org/react'
+} from '@heroui/react'
 import { Icon } from '../icons/_Icon'
 import { SchemaFieldType } from './fields/SchemaFieldType'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { fieldsState } from '@/state'
+import { useStore } from '@/state'
 import { SchemaField } from './fields/SchemaField'
 import { FieldType, fieldsTypes } from '@/utils/configs/fields'
 
 export default function SchemaForm() {
-    const fields = useRecoilValue(fieldsState)
-    const setFields = useSetRecoilState(fieldsState)
+    const fields = useStore((state) => state.fieldsState)
+    const setFields = useStore((state) => state.setFieldsState)
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
     return (
@@ -43,6 +42,11 @@ export default function SchemaForm() {
                             <SchemaField
                                 key={index}
                                 icon={fieldsTypes[field.type].icon}
+                                onDelete={() => {
+                                    const newFields = [...fields]
+                                    newFields.splice(index, 1)
+                                    setFields(newFields)
+                                }}
                                 {...{ ...field, ...{ type: fieldsTypes[field.type].name } }}
                             />
                         ))}
@@ -62,16 +66,14 @@ export default function SchemaForm() {
                                 {Object.entries(fieldsTypes).map(([key, field]) => (
                                     <SchemaFieldType
                                         onPress={() => {
-                                            setFields((fields) => {
-                                                const newFields = [...fields]
-                                                newFields.push({
-                                                    name: '',
-                                                    type: key as FieldType,
-                                                    required: false,
-                                                    unique: false
-                                                })
-                                                return newFields
+                                            const newFields = [...fields]
+                                            newFields.push({
+                                                name: '',
+                                                type: key as FieldType,
+                                                required: false,
+                                                unique: false
                                             })
+                                            setFields(newFields)
                                             onClose()
                                         }}
                                         key={key}
