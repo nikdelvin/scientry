@@ -1,5 +1,6 @@
 'use client'
 import { HeroUIProvider } from '@heroui/react'
+import { ToastProvider } from '@heroui/toast'
 import io from 'socket.io-client'
 import { useEffect } from 'react'
 import { useStore } from '../state'
@@ -26,6 +27,7 @@ export default function Main({
 }>) {
     return (
         <HeroUIProvider>
+            <ToastProvider />
             <SocketRoot>
                 <main className="select-none overflow-hidden">
                     <div className="flex h-screen w-screen flex-col overflow-y-scroll">{children}</div>
