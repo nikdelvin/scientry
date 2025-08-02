@@ -12,10 +12,12 @@ const SocketRoot = ({
 }>) => {
     const setSocketState = useStore((state) => state.setSocketState)
     useEffect(() => {
+        /*
         const socketIO = io({ path: '/api/ws' })
         socketIO.on('connect', () => {
             setSocketState(socketIO)
         })
+        */
     }, [])
     return children
 }
