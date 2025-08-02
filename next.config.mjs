@@ -8,16 +8,6 @@ const nextConfig = {
             use: ['@svgr/webpack']
         })
         return config
-    },
-    experimental: {
-        turbo: {
-            rules: {
-                '*.svg': {
-                    loaders: ['@svgr/webpack'],
-                    as: '*.tsx'
-                }
-            }
-        }
     }
 }
 
