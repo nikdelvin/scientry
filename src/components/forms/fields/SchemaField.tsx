@@ -1,4 +1,4 @@
-import { Icon } from '@/components/icons/_Icon'
+import { Icon } from '../../../components/icons/_Icon'
 import { Button, Card, CardBody, Input, Switch } from '@heroui/react'
 
 export const SchemaField = ({

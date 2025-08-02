@@ -1,4 +1,4 @@
-import { Icon } from '@/components/icons/_Icon'
+import { Icon } from '../../components/icons/_Icon'
 import { DataTypes } from 'sequelize'
 
 export type FieldType =

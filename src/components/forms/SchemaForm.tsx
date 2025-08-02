@@ -11,9 +11,9 @@ import {
 } from '@heroui/react'
 import { Icon } from '../icons/_Icon'
 import { SchemaFieldType } from './fields/SchemaFieldType'
-import { useStore } from '@/state'
+import { useStore } from '../../state'
 import { SchemaField } from './fields/SchemaField'
-import { FieldType, fieldsTypes } from '@/utils/configs/fields'
+import { FieldType, fieldsTypes } from '../../utils/configs/fields'
 
 export default function SchemaForm() {
     const fields = useStore((state) => state.fieldsState)

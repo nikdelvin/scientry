@@ -3,3 +3,4 @@ env:
     value: "production"
     availability:
       - RUNTIME
+      - BUILD

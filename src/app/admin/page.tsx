@@ -1,9 +1,9 @@
 'use client'
-import { useStore } from '@/state'
+import { useStore } from '../../state'
 import { useEffect } from 'react'
-import SchemaForm from '@/components/forms/SchemaForm'
-import List from '@/components/menu/List'
-import ModelsList from '@/components/menu/ModelsList'
+import SchemaForm from '../../components/forms/SchemaForm'
+import List from '../../components/menu/List'
+import ModelsList from '../../components/menu/ModelsList'
 
 export default function Home() {
     const socket = useStore((state) => state.socketState)
